@@ -14,9 +14,6 @@ function ListDemo() {
   let [list, setList] = useState(["delhi"]);
 
   let addItemAction = () => {
-    // console.log(inputRef.current);
-    // console.log(document.querySelector("#id1"));
-
     let inputValue = inputRef.current.value;
     let newList = [inputValue, ...list];
     setList(newList);
@@ -35,20 +32,26 @@ function ListDemo() {
       <input type="button" value="Add New Item" onClick={addItemAction} />
 
       {list.map((item) => (
-        <div>
-          <h1>{item}</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
-            sit laborum quia non hic doloribus id quisquam consequuntur quis
-            iusto quod, assumenda vitae, molestias ipsa ex labore quaerat
-            ducimus accusamus.
-          </p>
-          <div>
-            <input type="button" value="&#128077;" />
-            <input type="button" value="&#128078;" />
-          </div>
-        </div>
+        <MessageDemo message={item} />
       ))}
+    </>
+  );
+}
+
+function MessageDemo({ message }) {
+  return (
+    <>
+      <h1>Hello {message}</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+        dolorem quas sequi tenetur quo odit cupiditate assumenda voluptas
+        quibusdam blanditiis voluptatem quis mollitia eaque molestiae animi,
+        provident eligendi facilis incidunt.
+      </p>
+      <div>
+        <input type="button" value="&#128077;" />
+        <input type="button" value="&#128078;" />
+      </div>
     </>
   );
 }
