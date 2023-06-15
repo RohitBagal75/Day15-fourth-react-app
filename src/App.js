@@ -1,29 +1,22 @@
 function App() {
   return (
     <>
-      <h1>Props Demo</h1>
-
-      {/** Calling the MessageDemo(1, 'abcd') */}
-      <MessageDemo />
-      <MessageDemo name="Pawan" />
-      <MessageDemo name="Vitthal" email="v@gmail.com" />
-      <MessageDemo name="shivam"  email="s@gmail.com"/>
-      <MessageDemo name="rohit"  email="r@gmail.com"/>
-      <MessageDemo name="cdac"  email="c@gmail.com"/>
+    <h1>Props Demo</h1>
+    <ListDemo />
     </>
   );
 }
 
-// Reusable
-// how to make this "dynmaic"
-function MessageDemo({email,name}) {
-  // console.log("I am inside messagedemo", props);
-
-  return (
+function ListDemo(){
+  let data = "Hello Universe";
+  let list = ["delhi","calcutta","mumbai"];
+  return(
     <>
-      <h1>Hello {name} {email}</h1>
+      <h1>{data}</h1>
+
+      {list.forEach((item ) => item)}
+      {list.map((item ) => item)}
     </>
   );
 }
-
 export default App;
