@@ -1,36 +1,42 @@
+import { useState } from "react";
+
 function App() {
   return (
     <>
-    <h1>Props Demo</h1>
-    <ListDemo />
+      <h1>Stateful List</h1>
+      <ListDemo />
     </>
   );
 }
 
-function ListDemo(){
-  let data = "Hello Universe";
-  let list = ["","","","",""];
-  let list1=[];
-  for(let i=0;i<10;i++){
-    list1.push("");
-  }
-  return(
+function ListDemo() {
+  // let list = ["delhi"]
+  // C1: Stateful Variable
+  let [list, setList] = useState(["delhi"]);
+
+  // C2: Acton Member Funcn
+  let addItemAction = () => {
+    // why didn u use push method, push method update the same object
+    // setter method requires immutable object.
+    // We have to pass new list.
+    let newList = [...list, "mumbai"];
+    console.log(newList);
+
+    // DOM :: TRIGGER DOM
+    setList(newList);
+  };
+
+  return (
     <>
-      <h1>{data}</h1>
+      {/** C3: Event Binding */}
+      <input type="button" value="Add New Item" onClick={addItemAction} />
 
-      {list1.map((item ) => (
-        <div>
-        <h1>Hello Universe</h1>
-        </div>
-      ))}
-
-     <hr />
-      {list.map((item ) => (
-        <div>
-        <h1>Hello World</h1>
-        </div>
+      {/** C4: List */}
+      {list.map((item) => (
+        <h1>Hello {item}</h1>
       ))}
     </>
   );
 }
+
 export default App;
