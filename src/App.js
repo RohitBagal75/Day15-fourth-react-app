@@ -10,8 +10,8 @@ function App() {
 }
 
 function MyTodo() {
-  let inputRef = useRef();
-  let [todo, setTodo] = useState({Task:""});
+  
+  let [todo, setTodo] = useState({Task:"",description:""});
 
   let handlerChangeTaskAction = (e) => {
     console.log(e.target);
@@ -19,8 +19,15 @@ function MyTodo() {
     setTodo(newTodo);
 
   };
+  
+  let handlerChangeDescriptionAction = (e) => {
+    console.log(e.target);
+    let newTodo = {...todo,description:e.target.value};
+    setTodo(newTodo);
+
+  };
   let addTodoAction = () => {
-    alert(todo.task);
+   console.log(todo);
   };
 
   return (
@@ -32,6 +39,14 @@ function MyTodo() {
             value={todo.task}
             onChange={handlerChangeTaskAction}
           />
+          <textarea
+            className="form-control"
+            col="30"
+            rows="3"
+            placeholder="Enter Description"
+            value={todo.description}
+            onChange={handlerChangeDescriptionAction}
+          ></textarea>
           <input type="button" value="Add Todo" onClick={addTodoAction} />
        
     </>
